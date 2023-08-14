@@ -12,8 +12,11 @@ public class Descanso{
 
     public String getStatusGeral(){
         String status = "Cansado";
-        if(horasDescanso>26){
-            status = "Descansado";
+        if(numerosSemanas != 0){
+            int verifica = horasDescanso/numerosSemanas;
+            if(verifica>=26){
+                status = "Descansado";
+            }
         }
         return status;
     }
