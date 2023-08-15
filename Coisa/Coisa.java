@@ -65,7 +65,7 @@ public class Coisa {
       System.out.println();
       System.out.println("Resumos: ");
       System.out.println(meusResumos.imprimeResumos());
-      /*System.out.println(meusResumos.temResumo("Classes"));
-      System.out.println(meusResumos.temResumo("Objetos")); */
+      System.out.println(meusResumos.temResumo("Classes"));
+      System.out.println(meusResumos.temResumo("Objetos")); 
   } 
 }
