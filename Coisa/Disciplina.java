@@ -20,10 +20,11 @@ public class Disciplina{
     }
 
     public boolean aprovado(){
+        double mediaAux = 0;
         for(int i=0; i<4; i++){
-            media += notas[i];
+            mediaAux += notas[i];
         }
-        media /= 4;
+        media = mediaAux / 4;
         return media >= 7;
     }
 
