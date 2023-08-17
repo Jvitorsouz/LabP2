@@ -12,23 +12,38 @@ public class Disciplina{
     }
 
     public void cadastraHoras(int horas){
-        this.horas = horas;
+        this.horas += horas;
     }
 
     public void cadastraNota(int nota, double valorNota){
         notas[nota-1] = valorNota;
     }
-
-    public boolean aprovado(){
-        double mediaAux = 0;
-        for(int i=0; i<4; i++){
-            mediaAux += notas[i];
+    
+    //Metodo para calcular a media
+    private double calculaMedia(){
+        double somaNotas = 0;
+        for(int i=0; i<notas.length; i++){
+            somaNotas += notas[i];
         }
-        media = mediaAux / 4;
-        return media >= 7;
+        media = somaNotas/4;
+        return media;
     }
 
+    public boolean aprovado(){
+        return calculaMedia() >= 7;
+    }
+    
+    /* 
+    public boolean aprovado(){
+        double somaNotas = 0;
+        for(int i=0; i<notas.length; i++){
+            somaNotas += notas[i];
+        }
+        media = somaNotas/4;
+        return media >= 7;
+    } */
+
     public String toString(){
-        return nomeString + " " + horas + " " + media + " " + Arrays.toString(notas);
+        return nomeString + " " + horas + " " + calculaMedia() + " " + Arrays.toString(notas);
     }
 }
