@@ -1,5 +1,4 @@
 
-
 public class Descanso{
 
     private int horasDescanso;
