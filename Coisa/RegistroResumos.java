@@ -33,9 +33,20 @@ public class RegistroResumos{
     public String imprimeResumos(){
         String texto = "- " + aux + " resumo(s) cadastrado(s)";
         texto += "\n- ";
+        int i = 0;
+        while (true){
+            texto += temas[i];
+            i++;
+            if(i==aux){
+                break;
+            }
+            texto += " | ";
+
+        }
+        /* 
         for(int i =0; i<aux; i++){
             texto += temas[i] + " | ";
-        }
+        } */
         return texto;
     }
 
