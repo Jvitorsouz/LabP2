@@ -1,0 +1,182 @@
+No dia 23/04 comemoramos o Dia Mundial do Livro. Nesse contexto, surgiu a ideia de desenvolver um sistema de incentivo à escrita e leitura de textos entre os estudantes da computação@ufcg. Ninguém melhor do que você para desenvolver essa ideia. O CronicasDoEstudante é um sistema que permite registrar, ler e pesquisar crônicas e também manipular livretos com suas crônicas favoritas. Essas crônicas são textos produzidos pelos estudantes que descrevem vivências acadêmicas em disciplinas, projetos, estágios, análises críticas sobre tecnologias exploradas nas disciplinas ou mesmo regulamentos existentes no curso e até comentários sobre a estrutura curricular do curso.
+Neste sistema você não irá implementar usar a classe Main dada (aqui). Esta classe contém um método main() que irá executar a classe CronicasDoEstudanteSistema. Lembre-se que esta classe do sistema pode chamar outras. Você precisará criar uma classe de sistema (CronicasDoEstudanteSistema) que terá um construtor, atributos e métodos que seriam usados pelo Main. O CronicasDoEstudanteSistema terá responsabilidade de capturar as demandas/eventos do usuário e direcionar para as demais classes do sistema (mais relacionadas com a lógica).
+
+(1) o CronicasDoEstudanteSistema armazena as crônicas registradas pelos estudantes (no máximo 1000) de modo que tais crônicas sejam exibidas de acordo com a sua ordem de inserção (de 1 a 1000). Uma crônica é descrita a partir de um título, um texto, um autor e uma data de criação. O título identifica unicamente uma crônica. Todas as informações de uma crônica são obrigatórias, exceto o nome do autor. Se o nome do autor não for informado, considera-se que é um autor Anônimo. A representação textual de uma crônica é da seguinte forma:
+
+
+Cronica #1
+
+Minha semana do fera 2022.2
+
+Data: 13/03/2023
+
+Autor: Anônimo
+
+Cheguei bem fera na UFCG, não sabia onde achar nada… A semana do fera foi essencial para eu tomar um rumo…
+
+
+Nesse contexto, o CronicasDoEstudanteSistema deve oferecer as seguintes funcionalidades:
+
+void cadastrarCronica(titulo, texto, data, autor)
+void cadastrarCronica(titulo, texto, data)
+String listarCronicas()
+
+(2) Sempre que uma crônica for lida deve-se incrementar um contador de quantidade de leituras para esta crônica. A operação que proporciona a leitura da i-ésima crônica registrada no sistema, implica em retornar o texto desta crônica para o usuário.
+
+
+O contador que registra a quantidade de leituras das crônicas pode ser usado para informar a crônica mais lida do sistema. Considere o registro das crônicas abaixo:
+
+//registra crônica
+
+Minha semana do fera 2022.2
+
+13/03/2023
+
+Cheguei bem fera na UFCG, não sabia onde achar nada… A semana do fera foi essencial para eu tomar um rumo…
+
+
+//registra crônica
+
+JUnit lá vou eu!
+
+19/04/2023
+
+João Jão
+
+JUnit é o framework de Java para testes de unidade, disponível na versão 5…
+
+
+Agora, a crônica “Minha semana do fera 2022.2” foi lida 2 vezes e a crônica “JUnit lá vou eu!” foi lida 1 vez. Nesse caso, a funcionalidade de crônica mais lida irá apresentar o título da crônica mais lida seguido da quantidade de vezes que foi lida:
+
+//mais lida
+
+Minha semana do fera 2022.2 - lida 2 vezes
+
+
+O sistema agora deve incluir as seguintes funcionalidades:
+
+String lerCronica(i) //i é o índice da crônica
+String exibirCronicaMaisLida()
+
+(3) Você também pode criar livretos de crônicas. Um livreto é um agrupamento de 3 a 5 crônicas, permitindo que você gere diferentes formas de organizar as crônicas do sistema. Deve ser possível criar livreto, ler livreto e verificar se uma crônica está em um livreto. Ao criar o livreto deve-se passar as crônicas que o compõem, se a quantidade de crônicas for inferior a 3 ou superior a 5, o sistema informa “Erro ao criar Livreto!”.. Após a criação do livreto não é possível alterar as crônicas que o compõem. O sistema suporta 100 livretos, assim, quando o 101o for criado, será armazenado no lugar do livreto mais antigo, ou seja, aquela que foi inserida primeiro. A mesma crônica pode aparecer em mais de um livreto.
+
+
+Observem que a leitura de um livreto significa ler todas as crônicas contidas nele e a verificação se uma crônica pertence ou não ao livreto é dado retornando um valor booleano se o objeto correspondente à crônica está ou não presente no livreto. Se a crônica buscada não existir no sistema ou não estiver presente no livreto, será retornado false.
+
+
+Nesse caso, os seguintes métodos serão introduzidos no sistema:
+
+String criarLivreto(int[]) //array com a posição das crônicas a serem inseridas no Livreto
+String lerLivreto(i) //i é o indice do livreto
+boolean contemCronicaNoLivreto (título, i) //título da crônica e índice do livreto
+
+Observação: Você pode acrescentar métodos ou atributos que achar necessários para um melhor uso das classes descritas acima.
+
+
+Exemplo de Main:
+
+public class Main {
+
+    //o main usa apenas uma classe, mas, esta classe usa outras...
+
+    public static void main(String[] args) {
+
+        CronicasDoEstudanteSistema sistema = new CronicasDoEstudanteSistema();
+
+        sistema.cadastrarCronica("Minha semana do fera 2022.2", "Cheguei bem fera na UFCG, não sabia onde achar nada… A semana do fera foi essencial para eu tomar um rumo…"
+
+, "13/03/2023");
+
+        sistema.cadastrarCronica("JUnit lá vou eu!", "JUnit é o framework de Java para testes de unidade, disponível na versão 5…", "19/04/2023", "Nathanzinho");
+
+        sistema.cadastrarCronica("Mulheres na computacao!", "Ada Lovelace eh uma importante figura na historia da computacao...", "24/08/2023");
+
+        System.out.println(sistema.listarCronicas());
+
+        System.out.println(sistema.lerCronica(0));
+
+        System.out.println(sistema.lerCronica(0));
+
+        System.out.println(sistema.exibirCronicaMaisLida());
+
+        sistema.criarLivreto(new int[] {0,1,2});
+
+        sistema.criarLivreto(new int[] {0,1});
+
+        System.out.println(sistema.lerLivreto(0));
+
+        System.out.println(sistema.contemCronicaNoLivreto("Minha semana do fera 2022.2", 0));
+
+        System.out.println(sistema.contemCronicaNoLivreto("Meu primeiro simulado de P2", 0));
+
+    }
+
+}
+
+
+—--------------------------------------------------------------------------------------------------------------------
+
+Saída:
+
+Cronica #1
+
+Minha semana do fera 2022.2
+
+Data: 13/03/2023
+
+Autor: Anônimo
+
+Cheguei bem fera na UFCG, não sabia onde achar nada… A semana do fera foi essencial para eu tomar um rumo…
+
+
+Cronica #2
+
+JUnit lá vou eu!
+
+Data: 19/04/2023
+
+Autor: Nathanzinho
+
+JUnit é o framework de Java para testes de unidade, disponível na versão 5…
+
+
+Cronica #3
+
+Mulheres na computacao!
+
+Data: 24/08/2023
+
+Autor: Anônimo
+
+Ada Lovelace eh uma importante figura na historia da computacao...
+
+****
+
+Cheguei bem fera na UFCG, não sabia onde achar nada… A semana do fera foi essencial para eu tomar um rumo…
+
+Cheguei bem fera na UFCG, não sabia onde achar nada… A semana do fera foi essencial para eu tomar um rumo…
+
+***
+
+Minha semana do fera 2022.2 - lida 2 vezes
+
+***
+
+Erro ao criar Livreto!
+
+Cheguei bem fera na UFCG, não sabia onde achar nada… A semana do fera foi essencial para eu tomar um rumo…
+
+JUnit é o framework de Java para testes de unidade, disponível na versão 5…
+
+Ada Lovelace eh uma importante figura na historia da computacao...
+
+***
+
+Minha semana do fera 2022.2 - lida 3 vezes
+
+***
+
+true
+
+false
+
