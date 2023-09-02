@@ -1,0 +1,29 @@
+//O professor da disciplina de PTCC criou um cadastro de temas possíveis //para os alunos escolherem como trabalho de conclusão de curso. Um tema //possui titulo, descrição e orientador (email). Ainda é possível associar //uma popularidade a cada tema que é representada por uma quantidade //inteira de votos positivos para aquele tema, e também um conjunto de //comentários acerca do tema (os 5 últimos comentários, de fato). Quando o //tema é alocado ela fica indisponível. 
+
+
+TemaTCC
+---
+//Atributos
+- titulo: str
+- descricao: str
+- emailOrientador: str
+- popularidade: int
+- comentarios: str[]
+--- 
++ TemaTCC(titulo: str, descricao: str, emailOrientador: str)
+//Caso a descrição não seja obrigatoria
++ TemaTCC(titulo: str, emailOrientador: str)
+
+//Metodos essenciais
+//Para setar a descrição
++ setDescricao(descricao: str): void
+//a popularidade é na forma de like
++ adicionaPopularidade(): void
++ getPopularidade(): int
++ adicionaComentario(msg: str): void
++ getComentarios(): str[]
+
+//Metodos basicos
++ toString(): str
+---
+
