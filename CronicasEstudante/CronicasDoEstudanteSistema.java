@@ -27,11 +27,5 @@ public class CronicasDoEstudanteSistema{
         }
     }
 
-    public String listarCronicas(){
-        return "";
-    }
 
-    public Cronicas lerCronica(int i){
-        return cronicas[i];
-    }
 }
