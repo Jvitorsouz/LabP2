@@ -17,11 +17,12 @@ public class Main {
          
         System.out.println(sistema.listarCronicas());
 
-        /* 
+        
         System.out.println(sistema.lerCronica(0));
 
         System.out.println(sistema.lerCronica(0));
         
+        /* 
         System.out.println(sistema.exibirCronicaMaisLida());
 
         sistema.criarLivreto(new int[] {0,1,2});
