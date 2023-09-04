@@ -4,6 +4,7 @@ public class Main{
 
     public static void main(String[] args){
        
+        BEP sistema = new BEP();
         Scanner sc = new Scanner(System.in);
 
         final String MENU = "A - Cadastrar Bordado;\n"+
@@ -31,11 +32,43 @@ public class Main{
         final String SAIR = "L";
 
         String op = "";
+        int id;
+        int linhas;
+        int colunas;
+        String tipoPonto;
 
         do{
+            System.out.println("\nVoce pode cadastrar " + sistema.getQTD()+ " bordados. O que deseja fazer?\n");
             op = leString(MENU, sc);
             switch (op){
-                case CADASTRAR: break;
+                case CADASTRAR: 
+                    System.out.print("Numero do bordado? [0-9]: ");
+                    id = sc.nextInt();
+                    System.out.print("Numero de linhas? [2-100]: ");
+                    linhas = sc.nextInt();
+                    System.out.print("Numero de colunas [2-100]: ");
+                    colunas = sc.nextInt();
+                    sistema.cadastrarBordado(id, linhas, colunas);
+                    break;
+
+                case ATUALIZAR:
+                    System.out.print("Numero do bordado? [0-9]: ");
+                    id = sc.nextInt();
+                    System.out.print("No a ser colocado no bordado? [/ \\ | - x, vazio para remover] ");
+                    tipoPonto = sc.next();
+                    System.out.print("Numero de linhas? [2-100]: ");
+                    linhas = sc.nextInt();
+                    System.out.print("Numero de colunas [2-100]: ");
+                    colunas = sc.nextInt();
+                    sistema.atualizaBordado(id, tipoPonto, linhas, colunas);
+                    break;
+
+                case IMPRIMIR:
+                    System.out.print("Bordado a ser impresso?: ");
+                    id = sc.nextInt();
+                    System.out.println(sistema.imprimeBordado(id));
+                    break;
+                
             }
         }while(!op.equals(SAIR));
         sc.close();
@@ -48,7 +81,9 @@ public class Main{
 		System.out.println(msg);
         System.out.print("Ação: ");
 		String op = input.nextLine();
-		input.nextLine();
+		System.out.println("\n");
 		return op;
 	}
+
 }
+
