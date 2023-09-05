@@ -50,7 +50,8 @@ public class Bordado{
         this.colunas = coluna;
     }
 
+    //classe compra em manutenção
     public double getPreco(){
-        return preco;
+       return preco;
     }
 }
