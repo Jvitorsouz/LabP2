@@ -7,6 +7,7 @@ public class Main{
         BEP sistema = new BEP();
         Compra compras = new Compra();
         Scanner sc = new Scanner(System.in);
+        Scanner sc1 = new Scanner(System.in);
 
         final String MENU = "A - Cadastrar Bordado;\n"+
 							"B - Atualizar Bordado;\n"+
@@ -87,10 +88,14 @@ public class Main{
                     break;
                 
                 case CADASTRARCOMPRA:
+                /* 
+                        System.out.print("Numero dos bordados a serem comprados? [0-9] ");
+                        idCompra = sc1.nextLine();
+                        compras.adicionaCompra(idCompra); */
                         break;
                 
                 case IMPRIMIRCOMPRA:
-                    System.out.println(compras.imprimiCompra());
+                    //System.out.println(compras.imprimiCompra());
                     break;
                 
             }
