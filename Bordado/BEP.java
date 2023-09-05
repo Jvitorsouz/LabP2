@@ -18,16 +18,36 @@ public class BEP{
     public void atualizaBordado(int id, String tipoPonto, int numLinhas, int numColunas){
         Ponto ponto = new Ponto(tipoPonto, numLinhas, numColunas);
         bordados[id].adicionarPonto(ponto);
-        //bordados[id].adicionarPonto(tipoPonto, numLinhas, numColunas);
     }
 
 
     public String imprimeBordado(int id){
-        return bordados[id].toString();
+        return bordados[id].exibiBordado();
+    }
+
+    public String listarBordados(){
+        String formatacao = "";
+        for(int i = 0; i<bordados.length; i++){{
+            if(bordados[i] != null){
+                formatacao += bordados[i].toString();
+            }
+        }
+
+        }
+        return formatacao;
+    }
+
+    public void alteraTamnahoBordado(int id, int numLinhas, int numColunas){
+        bordados[id].setLinhas(numLinhas);
+        bordados[id].setColunas(numColunas);
     }
 
     public int getQTD(){
         return qtdBordados;
+    }
+
+    public Bordado getBordado(int idc){
+        return bordados[idc];
     }
     
 }
