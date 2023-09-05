@@ -86,16 +86,27 @@ public class Main{
                     colunas = sc.nextInt();
                     sistema.alteraTamnahoBordado(id, linhas, colunas);
                     break;
-                
-                case CADASTRARCOMPRA:
-                /* 
-                        System.out.print("Numero dos bordados a serem comprados? [0-9] ");
-                        idCompra = sc1.nextLine();
-                        compras.adicionaCompra(idCompra); */
-                        break;
-                
-                case IMPRIMIRCOMPRA:
-                    //System.out.println(compras.imprimiCompra());
+
+                 case AVALIAR:
+                    System.out.print("Numero do bordado a ser avaliado? [0-9] ");
+                    id = sc.nextInt();
+                    System.out.print("Nota? [1-5]: ");
+                    Double nota = sc.nextDouble();
+                    System.out.print("Comentario: ");
+                    String comentario = sc1.nextLine();
+                    sistema.avaliarBordado(id, nota, comentario);
+                    break;
+
+                case NOTAGERAL:
+                    System.out.print("Numero do bordado para listar a nota geral? [0-9] ");
+                    id = sc.nextInt();
+                    System.out.println("Nota Geral: " + sistema.getAvaliacao(id));
+                    break;
+
+                case LISTARAVALIACOES:
+                    System.out.print("Numero do bordado para listar a nota geral? [0-9] ");
+                    id = sc.nextInt();
+                    System.out.println(sistema.getAvaliacoes(id));
                     break;
                 
             }
