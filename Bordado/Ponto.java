@@ -1,4 +1,4 @@
-public class Ponto{
+/*public class Ponto{
 
     private String tipoPonto;
     private int linhaPonto;
@@ -22,4 +22,4 @@ public class Ponto{
         return tipoPonto;
     }
 
-}
+}*/
