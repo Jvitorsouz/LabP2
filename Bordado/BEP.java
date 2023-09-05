@@ -16,8 +16,8 @@ public class BEP{
     }
 
     public void atualizaBordado(int id, String tipoPonto, int numLinhas, int numColunas){
-        Ponto ponto = new Ponto(tipoPonto, numLinhas, numColunas);
-        bordados[id].adicionarPonto(ponto);
+        //Ponto ponto = new Ponto(tipoPonto, numLinhas, numColunas);
+        bordados[id].adicionarPonto(tipoPonto, numLinhas, numColunas);
     }
 
 
@@ -45,15 +45,17 @@ public class BEP{
     public int getQTD(){
         return qtdBordados;
     }
-
-    //Compra em revisão
-    public Bordado getBordado(int idc){
-        return bordados[idc];
+    
+    public void avaliarBordado(int id, double nota, String comentario){
+        Avaliacao avaliacao = new Avaliacao(nota, comentario);
+        bordados[id].adicionaAvaliacao(avaliacao);
     }
 
-    public double getPrecoBordado(int idc){
-        double preco = bordados[idc].getPreco();
-        return preco;
+    public double getAvaliacao(int id){
+        return bordados[id].getAvaliacao();
     }
     
+    public String getAvaliacoes(int id){
+        return bordados[id].getAvaliacoes(id);
+    }
 }
