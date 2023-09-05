@@ -46,8 +46,14 @@ public class BEP{
         return qtdBordados;
     }
 
+    //Compra em revisão
     public Bordado getBordado(int idc){
         return bordados[idc];
+    }
+
+    public double getPrecoBordado(int idc){
+        double preco = bordados[idc].getPreco();
+        return preco;
     }
     
 }
