@@ -14,17 +14,16 @@ public class Compra{
 
     public void adicionaCompra(String compra){
         String[] compras =  compra.split(" ");
-        /* 
         if(qtdeComprado < 10){
             for(int i=0; i<compras.length; i++){
                 bordados[qtdeComprado] =  sistema.getBordado(Integer.parseInt(compras[i]));
                 qtdeComprado++;
 
-                valorTotal += bordados[qtdeComprado].getPreco();
+                //valorTotal += sistema.getPrecoBordado(Integer.parseInt(compras[i]));
             }
         }else{
             qtdeComprado = 0;
-        }*/
+        }
     }
 
     public String imprimiCompra(){
