@@ -1,40 +1,22 @@
 public class Compra{
 
-    private Bordado[] bordados;
+    private int[] bordados;
     private double valorTotal;
     private int qtdeComprado;
     private BEP sistema;
+    private int indice;
 
 
     public Compra(){
-        bordados = new Bordado[10];
+        bordados = new int[10];
         sistema = new BEP();
     }
 
-
-    public void adicionaCompra(String compra){
-        String[] compras =  compra.split(" ");
-        if(qtdeComprado < 10){
-            for(int i=0; i<compras.length; i++){
-                bordados[qtdeComprado] =  sistema.getBordado(Integer.parseInt(compras[i]));
-                qtdeComprado++;
-
-                //valorTotal += sistema.getPrecoBordado(Integer.parseInt(compras[i]));
-            }
-        }else{
-            qtdeComprado = 0;
-        }
+    public void adicionarCompra(int id){
+        bordados[indice] = id;
     }
+    
 
-    public String imprimiCompra(){
-        String formatacao = " ";
-        for(int i = 0; i < qtdeComprado; i++){
-            formatacao += "Bordado " + (i+1) + "\n";
-            formatacao += bordados[i].exibiBordado();
-        }
-        formatacao += "\nTotal da Compra: " + valorTotal + "R$";
-        return formatacao;
-    }
 
 
 }
