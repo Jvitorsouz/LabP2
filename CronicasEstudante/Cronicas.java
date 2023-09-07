@@ -17,31 +17,23 @@ public class Cronicas{
         this.autor = autor;
     }
 
-    public String getTitulo(){
-        return this.titulo;
+    public String toString(){
+        return this.titulo +
+        "\nData: " + this.data + "\nAutor: " + this.autor +
+        "\n" + this.texto;
     }
 
     public String getTexto(){
-        return this.texto;
-    }
-
-    public String getTexto(int i){
         qtdLeitura++;
-        return this.texto;
+        return texto;
     }
 
-    public String getAutor(){
-        return this.autor;
+    public int getQtdeLeitura(){
+        return qtdLeitura;
     }
 
-    public String getData(){
-        return this.data;
+    public String getTitulo(){
+        qtdLeitura++;
+        return titulo;
     }
-
-    public void setLeitura(){
-        this.qtdLeitura++;
-    }
-
-
-
 }
