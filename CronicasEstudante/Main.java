@@ -22,19 +22,24 @@ public class Main {
 
         System.out.println(sistema.lerCronica(0));
         
-        /* 
+        
         System.out.println(sistema.exibirCronicaMaisLida());
 
-        sistema.criarLivreto(new int[] {0,1,2});
+        
+        try{
+            sistema.criarLivreto(new int[] {0,1,2});
+            sistema.criarLivreto(new int[] {0,1});
+        } catch (RuntimeException e){
+            System.out.println(e.getMessage());
+        }
 
-        sistema.criarLivreto(new int[] {0,1});
-
+         
         System.out.println(sistema.lerLivreto(0));
-
+        
         System.out.println(sistema.contemCronicaNoLivreto("Minha semana do fera 2022.2", 0));
 
         System.out.println(sistema.contemCronicaNoLivreto("Meu primeiro simulado de P2", 0));
-*/
+        
     }
 
 }
