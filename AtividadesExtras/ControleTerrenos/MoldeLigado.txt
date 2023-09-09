@@ -1,0 +1,38 @@
+Main
+association ControleTerreno
+---
+---
+---
+
+ControleTerreno
+composes Terreno
+---
+- terrenos: Terreno[][]
+---
++ ControleTerreno()
++ cadastraTerreno(linha: int, coluna:  int, nome: str, valor: int): void
++ exibiTerreno(linha: int, coluna: int): str
++ exibeVizinhos(linha: int, coluna: int): str
++ cadastraCasa(linha: int, coluna: int, area: int, andares: int): void
+---
+
+Terreno
+composes Casas
+---
+- nome: str
+- valor: int
+- casa: Casa
+---
++ Terreno(nome: str, valor: int)
++ criaCasa(area: int, andares: int): void
++ toString(): str;
+---
+
+Casas
+---
+- area: int
+- andares : int
+---
++ Casas(area: int, andares: int)
+---
+
