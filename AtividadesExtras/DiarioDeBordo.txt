@@ -1,4 +1,9 @@
-O MeuDiarioP2 é um sistema de diário para acompanhamento das suas experiências como aluno durante a disciplina. O diário é composto por um autor (nome do aluno) e por N anotações de estudo de P2, onde N é o total de aulas de P2 no semestre, ou seja, 30. Cada anotação possui uma data (dd/mm/aaaa) e um texto que é a anotação de estudo propriamente. Considere ainda que o diário tem um dono (nome) e o ano em que será usado. Além disso você pode incluir uma nota (0 a 10) na anotação descrevendo uma auto-avaliação sobre o seu desempenho a cada momento na disciplina. O seu sistema deve permitir:
+O MeuDiarioP2 é um sistema de diário para acompanhamento das suas experiências como aluno durante a disciplina. O diário é 
+composto por um autor (nome do aluno) e por N anotações de estudo de P2, onde N é o total de aulas de P2 no semestre, 
+ou seja, 30. Cada anotação possui uma data (dd/mm/aaaa) e um texto que é a anotação de estudo propriamente. 
+Considere ainda que o diário tem um dono (nome) e o ano em que será usado. Além disso você pode incluir uma nota (0 a 10) 
+na anotação descrevendo uma auto-avaliação sobre o seu desempenho 
+a cada momento na disciplina. O seu sistema deve permitir:
 
 1 - adicionar anotações
 2 - exibir uma anotação pela ordem de inserção
@@ -6,7 +11,10 @@ O MeuDiarioP2 é um sistema de diário para acompanhamento das suas experiência
 4 - listar anotações por desempenho (limite inferior, limite superior)
 5 - media de desempenho
 
-Deve ser possível criar temas para as anotações. Um tema possui um nome que descreve o conteúdo da anotação (classes, uso de objetos, reuso, polimorfismo, etc) e uma complexidade associada ao tema (1 a 5). O sistema é restrito e limita a criação de até 10 temas. Cada anotação pode ou não ter um tema associado e o mesmo tema pode ser adicionado a diferentes anotações. Você deve mudar o sistema para permitir:
+Deve ser possível criar temas para as anotações. Um tema possui um nome que descreve o conteúdo da anotação 
+(classes, uso de objetos, reuso, polimorfismo, etc) e uma complexidade associada ao tema (1 a 5). 
+O sistema é restrito e limita a criação de até 10 temas. Cada anotação pode ou não ter um tema associado 
+e o mesmo tema pode ser adicionado a diferentes anotações. Você deve mudar o sistema para permitir:
 
 1 - criar tema
 2 - adicionar tema a anotação (usar índices do tema e da anotação)
