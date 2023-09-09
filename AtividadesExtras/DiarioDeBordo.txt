@@ -1,0 +1,83 @@
+O MeuDiarioP2 é um sistema de diário para acompanhamento das suas experiências como aluno durante a disciplina. O diário é composto por um autor (nome do aluno) e por N anotações de estudo de P2, onde N é o total de aulas de P2 no semestre, ou seja, 30. Cada anotação possui uma data (dd/mm/aaaa) e um texto que é a anotação de estudo propriamente. Considere ainda que o diário tem um dono (nome) e o ano em que será usado. Além disso você pode incluir uma nota (0 a 10) na anotação descrevendo uma auto-avaliação sobre o seu desempenho a cada momento na disciplina. O seu sistema deve permitir:
+
+1 - adicionar anotações
+2 - exibir uma anotação pela ordem de inserção
+3 - listar todas as anotações
+4 - listar anotações por desempenho (limite inferior, limite superior)
+5 - media de desempenho
+
+Deve ser possível criar temas para as anotações. Um tema possui um nome que descreve o conteúdo da anotação (classes, uso de objetos, reuso, polimorfismo, etc) e uma complexidade associada ao tema (1 a 5). O sistema é restrito e limita a criação de até 10 temas. Cada anotação pode ou não ter um tema associado e o mesmo tema pode ser adicionado a diferentes anotações. Você deve mudar o sistema para permitir:
+
+1 - criar tema
+2 - adicionar tema a anotação (usar índices do tema e da anotação)
+3 - ao listar uma anotação incluir informação sobre o respectivo tema
+4 - contar anotações por tema (usar índice do tema)
+
+MOLDE LIGADO
+Main
+association Diario
+---
+---
+---
+
+Diario
+composes Anotacao
+composes Tema
+---
+- dono: str
+- anotacoes: Anotacao[]
+- ano: int
+- indiceLivre: int
+- temas: Tema[]
+---
++ Diario(dono: str, ano: int)
+
+//Metodos essencias
++ adicionarAnotacao(data: str, texto: str, nota: double): void
++ adicionarAnotacao(data: str, texto: str): void
++ listarAnotacoes(): str
++ listarAnotacoes(limiteInferior: double, limiteSuperior: double): str
++ contaAnotacoes(): int //Retorna indiceLivre
++ mediaDesempenho(): double
++ exibirAnotacao(indice: int): str
+
++ adicionarTema(conteudo: str, complexidade: int): void
++ adicionarTemaAAnotacao(indiceTema: int, indiceAnotacao: int): void
+
+//Metodos basicos
++ toString(): str
+
+---
+
+Anotacao
+aggregates Tema
+---
+- data: str
+- texto: str
+- desempenho: double
+- tema: Tema
+---
++ Anotacao(data: str, texto: str, nota: double)
++ Anotacao(data: str, texto: str, nota: double)
++ getData(): str
++ getTexto(): str
++ setDesempenho(nota: double): void
++ getDesempenho(): double
+//Metodos referidos a classe Tema
++ adicionaTema(tema: Tema): void
+
+//Metodos essenciais
++ toString(): str
+---
+
+Tema
+---
+- conteudo: str
+- complexidade: int
+---
++ Tema(conteudo: str, complexidade: int)
+
+//Metodos essenciais
++ toString(): str
+---
+
