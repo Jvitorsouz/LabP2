@@ -71,7 +71,7 @@ public class CronicasDoEstudanteSistema{
     public void criarLivreto(int[] posicoes){
         if(posicoes.length < 3 ){
             throw new IllegalArgumentException("Quantidade Minima de Cronicas = 3");
-        } if(posicoes.length > 5){
+        }if(posicoes.length > 5){
             throw new IllegalArgumentException("Quantidade Maxima de Cronicas = 5");
         }
 
