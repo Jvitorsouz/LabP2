@@ -10,12 +10,16 @@ public class MainAgenda{
         final String LISTAR = "L";
         final String EXIBIR = "E";
         final String SAIR = "S";
+        final String FAVORITOS = "F";
+        final String ADICIONARFAVORITO = "A";
+        final String REMOVERFAVORITO = "R";
 
         String op = "";
         int posicao = 0;
         String nome = "";
         String sobrenome = "";
         String telefone = "";
+    
 
         do{
             try{
@@ -46,6 +50,24 @@ public class MainAgenda{
 
                 case LISTAR:
                     System.out.println(sistema.listarContatos());
+                    break;
+
+                case FAVORITOS:
+                    System.out.println(sistema.listarFavoritos());
+                    break;
+                
+                case ADICIONARFAVORITO:
+                    System.out.print("Contato> ");
+                    int posicaoContato = sc.nextInt();
+                    System.out.print("Posição> ");
+                    int posicaoFavorito = sc.nextInt();
+                    System.out.println(sistema.adicionaFavorito(posicaoContato, posicaoFavorito));
+                    break;
+
+                case REMOVERFAVORITO:
+                    System.out.print("Posição> ");
+                    int posicaoFavorito1 = sc.nextInt();
+                    sistema.removerFavorito(posicaoFavorito1);
                     break;
             }
 
