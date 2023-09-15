@@ -3,23 +3,28 @@ import java.util.Arrays;
 public class SistemaAgenda{
 
     private Contato[] contatos;
+    private Favoritos favoritos;
     private int qtdeContatos;
 
     public SistemaAgenda(){
         contatos = new Contato[100];
+        favoritos = new Favoritos();
     }
 
     public String exibiMenu(){
         final String MENU = "\n(C)adastrar Contato\n"+
                             "(L)istar Contatos\n"+
                             "(E)xibir Contato\n"+
+                            "(F)avoritos\n"+
+                            "(A)dicionar Favorito\n"+
+                            "(R)emover Favorito\n"+
                             "(S)air";
         return MENU;
 
     }
 
     public void exibiMenuExcecao(String op){
-        if(!op.equals("C") && !op.equals("L") && !op.equals("E") && !op.equals("S")){
+        if(!op.equals("C") && !op.equals("L") && !op.equals("E") && !op.equals("S") && !op.equals("F") && !op.equals("A") && !op.equals("R")){
             throw new IllegalArgumentException("\nOPÇÃO INVALIDA!");
         }
     }
@@ -48,6 +53,7 @@ public class SistemaAgenda{
     }
 
     public String exibirContato(int posicao){
+        /* 
         int pos = -1;
         for(int i =0; i<qtdeContatos; i++){
             if(contatos[i].getPosicao() == posicao){
@@ -56,18 +62,37 @@ public class SistemaAgenda{
         }
         if(pos == -1){
             return "POSICAO INVALIDA";
+        }*/
+
+        if(contatos[posicao-1] == null){
+            return "POSICAO INVALIDA";
         }
-        return contatos[pos].exibiContato(); 
+
+
+        return contatos[posicao-1].exibiContato(); 
     }
 
     public String listarContatos(){
         String formatacao = "\n";
-         for(int i = 0; i<qtdeContatos; i++){
+         for(int i = 0; i<100; i++){
             if(contatos[i] != null){
                 formatacao += contatos[i].toString();
             }
          }
 
         return formatacao;
+    }
+
+    public String adicionaFavorito(int posContato, int posFavorito){
+        return favoritos.adiciona(contatos[posContato-1], posFavorito);
+    } 
+
+    public String listarFavoritos(){
+        return favoritos.toString();
+    }
+
+    public void removerFavorito(int posicao2){
+        favoritos.removeFavorito(posicao2);
+
     }
 }
