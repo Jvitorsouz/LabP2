@@ -4,12 +4,14 @@ public class Contato{
     private String sobrenome;
     private String telefone;
     private int posicao;
+    private String status;
 
     public Contato(String nome, String sobrenome, String telefone, int posicao){
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.telefone = telefone;
         this.posicao = posicao;
+        this.status = null;
     }
 
     public int getPosicao(){
@@ -48,11 +50,18 @@ public class Contato{
     }
 
     public String exibiContato(){
+        if(this.status != null){
+            return "\n" +this.status + " " + this.nome + " " + this.sobrenome + "\n" + this.telefone;
+        }
         return "\n" + this.nome + " " + this.sobrenome + "\n" + this.telefone;
     }
 
     public String toString(){
         return this.posicao + " - " + this.nome + " " + this.sobrenome + "\n";
+    }
+
+    public void setStatus(String heart){
+        this.status = heart;
     }
 
     
