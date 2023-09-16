@@ -4,7 +4,6 @@ public class SistemaAgenda{
 
     private Contato[] contatos;
     private Favoritos favoritos;
-    private int qtdeContatos;
 
     public SistemaAgenda(){
         contatos = new Contato[100];
@@ -38,8 +37,8 @@ public class SistemaAgenda{
             return "\nCONTATO INVALIDO";
         }
 
-        Contato contato = new Contato(nome, sobrenome, telefone, pos);
-        for(int i = 0; i<qtdeContatos; i++){
+        Contato contato = new Contato(nome, sobrenome, telefone);
+        for(int i = 0; i<100; i++){
             if(contatos[i] != null){
                 if(contatos[i].equals(contato)){
                     return "\nCONTATO JA CADASTRADO";
@@ -47,23 +46,11 @@ public class SistemaAgenda{
             }
         }
 
-        contatos[pos-1] = new Contato(nome, sobrenome, telefone, pos);
-        qtdeContatos++;
+        contatos[pos-1] = new Contato(nome, sobrenome, telefone);
         return "\nCADASTRO REALIZADO";
     }
 
     public String exibirContato(int posicao){
-        /* 
-        int pos = -1;
-        for(int i =0; i<qtdeContatos; i++){
-            if(contatos[i].getPosicao() == posicao){
-                pos = i;
-            }
-        }
-        if(pos == -1){
-            return "POSICAO INVALIDA";
-        }*/
-
         if(contatos[posicao-1] == null){
             return "POSICAO INVALIDA";
         }
@@ -76,7 +63,7 @@ public class SistemaAgenda{
         String formatacao = "\n";
          for(int i = 0; i<100; i++){
             if(contatos[i] != null){
-                formatacao += contatos[i].toString();
+                formatacao += (i+1) + contatos[i].toString();
             }
          }
 
