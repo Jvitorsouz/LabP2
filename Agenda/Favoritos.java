@@ -1,6 +1,5 @@
 public class Favoritos{
     private Contato[] favoritos;
-    private int qtdeContatos;
 
     public Favoritos(){
         favoritos = new Contato[10];
@@ -21,7 +20,6 @@ public class Favoritos{
         }
 
         favoritos[posFavorito-1] = contato;
-        qtdeContatos++;
         favoritos[posFavorito-1].setStatus("❤️");
         return "CONTATO FAVORITADO NA POSIÇÃO " + posFavorito + "!";
     }
@@ -30,7 +28,7 @@ public class Favoritos{
         String formatacao = "\n";
         for(int i = 0; i<10; i++){
             if(favoritos[i] != null){
-                formatacao += favoritos[i].toString() +  System.lineSeparator();
+                formatacao += (i+1) + favoritos[i].toString() +  System.lineSeparator();
             }
         }
         return formatacao;
