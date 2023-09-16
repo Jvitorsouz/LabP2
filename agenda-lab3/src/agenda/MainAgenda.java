@@ -1,3 +1,6 @@
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class MainAgenda{
@@ -5,6 +8,15 @@ public class MainAgenda{
     public static void main(String[] agrs){
         Scanner sc = new Scanner(System.in);
         SistemaAgenda sistema = new SistemaAgenda();
+
+        try{
+            carregaAgenda("agenda_inicial.cvs", sistema);
+        } catch(FileNotFoundException e){
+            System.err.println("Arquivo não encontrado: " + e.getMessage());
+        } catch(IOException e){
+            System.err.println("Erro lendo arquivo: " + e.getMessage());
+        }
+
 
         String op = "";
 
@@ -96,5 +108,14 @@ public class MainAgenda{
         System.out.print("Posição> ");
         int posicaoFavorito1 = sc.nextInt();
         sistema.removerFavorito(posicaoFavorito1);
+    }
+
+    private static void carregaAgenda(String arquivoContatos, SistemaAgenda sistema) throws FileNotFoundException, IOException{
+        LeitorDeAgenda leitor = new LeitorDeAgenda();
+
+        int carregados = leitor.carregaContatos(arquivoContatos, sistema);
+
+        System.out.println("Carregamos " + carregados + " registros.");
+        
     }
 }
