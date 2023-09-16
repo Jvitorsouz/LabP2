@@ -27,7 +27,7 @@ public class LeitorDeAgenda {
 	 * @throws IOException Caso não tenhamos permissão de ler o arquivo.
 	 * @throws FileNotFoundException Caso o arquivo não exista.
 	 */
-	public int carregaContatos(String arquivoContatos, Agenda agenda) throws FileNotFoundException, IOException {
+	public int carregaContatos(String arquivoContatos, SistemaAgenda sistema) throws FileNotFoundException, IOException {
 		int carregados = 0;
 
 		try (BufferedReader br = new BufferedReader(new FileReader(arquivoContatos))) {
@@ -39,7 +39,7 @@ public class LeitorDeAgenda {
 					continue;
 				}
 				String[] campos = linha.split(",");
-				processaLinhaCsvContatos(campos, agenda);
+				processaLinhaCsvContatos(campos, sistema);
 			}
 		}
 		
@@ -53,13 +53,13 @@ public class LeitorDeAgenda {
 	 * @param campos As informações lidas do csv. 
 	 * @param agenda A agenda a manipular. 
 	 */
-	private void processaLinhaCsvContatos(String[] campos, Agenda agenda) {
+	private void processaLinhaCsvContatos(String[] campos, SistemaAgenda sistema) {
 		int posicao = Integer.parseInt(campos[COLUNA_POSICAO]);
 		String nome = campos[COLUNA_NOME].trim();
 		String sobrenome = campos[COLUNA_SOBRENOME].trim();
 		String telefone = campos[COLUNA_TELEFONE].trim();
 
-		agenda.cadastraContato(posicao, nome, sobrenome, telefone);
+		sistema.cadastraContato(posicao, nome, sobrenome, telefone);
 	}
 
 }
