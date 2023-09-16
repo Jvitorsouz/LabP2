@@ -3,19 +3,14 @@ public class Contato{
     private String nome;
     private String sobrenome;
     private String telefone;
-    private int posicao;
     private String status;
 
-    public Contato(String nome, String sobrenome, String telefone, int posicao){
+    public Contato(String nome, String sobrenome, String telefone){
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.telefone = telefone;
-        this.posicao = posicao;
+        //this.posicao = posicao;
         this.status = null;
-    }
-
-    public int getPosicao(){
-        return this.posicao;
     }
 
     @Override
@@ -57,7 +52,7 @@ public class Contato{
     }
 
     public String toString(){
-        return this.posicao + " - " + this.nome + " " + this.sobrenome + "\n";
+        return " - " + this.nome + " " + this.sobrenome + "\n";
     }
 
     public void setStatus(String heart){
