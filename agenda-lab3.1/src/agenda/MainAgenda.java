@@ -4,158 +4,119 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-/**
- * Interface com menus texto para manipular uma agenda de contatos.
- * 
- * @author nazarenoandrade
- *
- */
-public class MainAgenda {
+public class MainAgenda{
 
-	public static void main(String[] args) {
-		Agenda agenda = new Agenda();
+    public static void main(String[] agrs){
+        Scanner sc = new Scanner(System.in);
+        SistemaAgenda sistema = new SistemaAgenda();
 
-		System.out.println("Carregando agenda inicial");
-		try {
-			/*
-			 * Essa é a maneira de lidar com possíveis erros por falta do arquivo. 
-			 */
-			carregaAgenda("agenda_inicial.csv", agenda);
-		} catch (FileNotFoundException e) {
-			System.err.println("Arquivo não encontrado: " + e.getMessage());
-		} catch (IOException e) {
-			System.err.println("Erro lendo arquivo: " + e.getMessage());
-		}
+        try{
+            carregaAgenda("agenda_inicial.cvs", sistema);
+        } catch(FileNotFoundException e){
+            System.err.println("Arquivo não encontrado: " + e.getMessage());
+        } catch(IOException e){
+            System.err.println("Erro lendo arquivo: " + e.getMessage());
+        }
 
-		Scanner scanner = new Scanner(System.in);
-		String escolha = "";
-		while (true) {
-			escolha = menu(scanner);
-			comando(escolha, agenda, scanner);
-		}
 
-	}
+        String op = "";
 
-	/**
-	 * Exibe o menu e captura a escolha do/a usuário/a.
-	 * 
-	 * @param scanner Para captura da opção do usuário.
-	 * @return O comando escolhido.
-	 */
-	private static String menu(Scanner scanner) {
-		System.out.println(
-				"\n---\nMENU\n" + 
-						"(C)adastrar Contato\n" + 
-						"(L)istar Contatos\n" + 
-						"(E)xibir Contato\n" + 
-						"(S)air\n" + 
-						"\n" + 
-						"Opção> ");
-		return scanner.next().toUpperCase();
-	}
+        while (true){
+            op = menu(sc);
+            comando(op, sistema, sc);
+        }
 
-	/**
-	 * Interpreta a opção escolhida por quem está usando o sistema.
-	 * 
-	 * @param opcao   Opção digitada.
-	 * @param agenda  A agenda que estamos manipulando.
-	 * @param scanner Objeto scanner para o caso do comando precisar de mais input.
-	 */
-	private static void comando(String opcao, Agenda agenda, Scanner scanner) {
-		switch (opcao) {
-		case "C":
-			cadastraContato(agenda, scanner);
-			break;
-		case "L":
-			listaContatos(agenda);
-			break;
-		case "E":
-			exibeContato(agenda, scanner);
-			break;
-		case "S":
-			sai();
-			break;
-		default:
-			System.out.println("Opção inválida!");
-		}
-	}
+    }
 
-	/**
-	 * Imprime lista de contatos da agenda.
-	 * 
-	 * @param agenda A agenda sendo manipulada.
-	 */
-	private static void listaContatos(Agenda agenda) {
-		System.out.println("\nLista de contatos: ");
-		String[] contatos = agenda.getContatos();
-		for (int i = 0; i < contatos.length; i++) {
-			if (contatos[i] != null) {
-				System.out.println(formataContato(i, contatos[i]));
-			}
-		}
-	}
+    private static String menu(Scanner scanner){
+        System.out.println("\n(C)adastrar Contato\n"+
+                            "(L)istar Contatos\n"+
+                            "(E)xibir Contato\n"+
+                            "(F)avoritos\n"+
+                            "(A)dicionar Favorito\n"+
+                            "(R)emover Favorito\n"+
+                            "(S)air");
+        System.out.print("Opção> ");                    
+        return scanner.next().toUpperCase();
+    }
 
-	/**
-	 * Imprime os detalhes de um dos contatos da agenda. 
-	 * 
-	 * @param agenda A agenda.
-	 * @param scanner Scanner para capturar qual contato.
-	 */
-	private static void exibeContato(Agenda agenda, Scanner scanner) {
-		System.out.print("\nQual contato> ");
-		int posicao = scanner.nextInt();
-		String contato = agenda.getContato(posicao);
-		System.out.println("Dados do contato:\n" + contato);
-	}
+    private static void comando(String op, SistemaAgenda sistema, Scanner scanner){
 
-	/**
-	 * Formata um contato para impressão na interface. 
-	 * 
-	 * @param posicao A posição do contato (que é exibida)/
-	 * @param contato O contato a ser impresso.
-	 * @return A String formatada.
-	 */
-	private static String formataContato(int posicao, String contato) {
-		return posicao + " - " + contato;
-	}
+        switch (op){
+            case "C":
+                cadastraContato(sistema, scanner);
+                break;
+            case "L":
+                listarContatos(sistema);
+                break;
+            case "E":
+                exibirContato(sistema, scanner);
+                break;
+            case "F":
+                exibirFavoritos(sistema);
+                break;
+            case "A":
+                adicionarFavorito(sistema, scanner);
+                break;
+            case "R":
+                removerFavorito(sistema, scanner);
+                break;
+            case "S":
+                System.exit(0);
+                break;
+            default:
+                System.out.println("OPÇÃO INVALIDA!");
+        }
+    }
 
-	/**
-	 * Cadastra um contato na agenda. 
-	 * 
-	 * @param agenda A agenda.
-	 * @param scanner Scanner para pedir informações do contato.
-	 */
-	private static void cadastraContato(Agenda agenda, Scanner scanner) {
-		System.out.print("\nPosição na agenda> ");
-		int posicao = scanner.nextInt();
-		System.out.print("\nNome> ");
-		String nome = scanner.next();
-		System.out.print("\nSobrenome> ");
-		String sobrenome = scanner.next();
-		System.out.print("\nTelefone> ");
-		String telefone = scanner.next();
-		agenda.cadastraContato(posicao, nome, sobrenome, telefone);
-	}
+    private static void cadastraContato(SistemaAgenda sistema, Scanner sc){
+        System.out.print("\nPosição> ");
+        int posicao = sc.nextInt();
+        sc.nextLine();
+        System.out.print("Nome> ");
+        String nome = sc.nextLine();
+        System.out.print("Sobrenome> ");
+        String sobrenome = sc.nextLine();
+        System.out.print("Telefone> ");
+        String telefone = sc.nextLine();
+        System.out.println(sistema.cadastraContato(posicao, nome, sobrenome, telefone));
+    }
 
-	/**
-	 * Sai da aplicação.
-	 */
-	private static void sai() {
-		System.out.println("\nVlw flw o/");
-		System.exit(0);
-	}
+    private static void listarContatos(SistemaAgenda sistema){
+        System.out.println(sistema.listarContatos());
+        
+    }
 
-	/**
-	 * Lê uma agenda de um arquivo csv. 
-	 * 
-	 * @param arquivoContatos O caminho para o arquivo.
-	 * @param agenda A agenda que deve ser populada com os dados. 
-	 * @throws IOException Caso o arquivo não exista ou não possa ser lido.
-	 */
-	private static void carregaAgenda(String arquivoContatos, Agenda agenda) throws FileNotFoundException, IOException {
-		LeitorDeAgenda leitor = new LeitorDeAgenda();
-		
-		int carregados =  leitor.carregaContatos(arquivoContatos, agenda);
-		System.out.println("Carregamos " + carregados + " registros.");
-	}
+    private static void exibirContato(SistemaAgenda sistema, Scanner sc){
+        System.out.print("Contato> ");
+        int posicao = sc.nextInt();
+        System.out.println(sistema.exibirContato(posicao));
+    }
+
+    private static void exibirFavoritos(SistemaAgenda sistema){
+        System.out.println(sistema.listarFavoritos());
+    }
+
+    private static void adicionarFavorito(SistemaAgenda sistema, Scanner sc){
+        System.out.print("Contato> ");
+        int posicaoContato = sc.nextInt();
+        System.out.print("Posição> ");
+        int posicaoFavorito = sc.nextInt();
+        System.out.println(sistema.adicionaFavorito(posicaoContato, posicaoFavorito));
+    }
+
+    private static void removerFavorito(SistemaAgenda sistema, Scanner sc){
+        System.out.print("Posição> ");
+        int posicaoFavorito1 = sc.nextInt();
+        sistema.removerFavorito(posicaoFavorito1);
+    }
+
+    private static void carregaAgenda(String arquivoContatos, SistemaAgenda sistema) throws FileNotFoundException, IOException{
+        LeitorDeAgenda leitor = new LeitorDeAgenda();
+
+        int carregados = leitor.carregaContatos(arquivoContatos, sistema);
+
+        System.out.println("Carregamos " + carregados + " registros.");
+        
+    }
 }
