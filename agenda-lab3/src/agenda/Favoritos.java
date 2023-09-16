@@ -1,3 +1,4 @@
+
 public class Favoritos{
     private Contato[] favoritos;
 
