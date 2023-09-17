@@ -12,6 +12,9 @@ public class Agenda {
 	}
 
 	public String cadastraContato(int pos, String nome, String sobrenome, String telefone){
+        nome = nome.trim();
+        sobrenome = sobrenome.trim();
+        telefone = telefone.trim();
         if(pos>100 || pos<1){
             return "\nPOSICAO INVALIDA";
         }if(nome == ""){
@@ -54,6 +57,12 @@ public class Agenda {
     }
 	
 	public String adicionaFavorito(int posContato, int posFavorito){
+        if(posContato < 1 || posContato > 100){
+            return "\nPOSICAO INVALIDA!";
+        }
+         if(posFavorito < 1 || posFavorito > 10 || contatos[posContato-1] == null){
+            return "\nPOSICAO INVALIDA!";
+        }
         return favoritos.adiciona(contatos[posContato-1], posFavorito);
     } 
 
