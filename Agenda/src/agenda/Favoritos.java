@@ -30,7 +30,7 @@ public class Favoritos{
         String formatacao = "\n";
         for(int i = 0; i<10; i++){
             if(favoritos[i] != null){
-                formatacao += (i+1) + favoritos[i].toString() +  System.lineSeparator();
+                formatacao += (i+1) + favoritos[i].toString();
             }
         }
         return formatacao;
