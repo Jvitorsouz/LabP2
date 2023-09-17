@@ -74,7 +74,6 @@ public class MainAgenda {
 		}
 	}
 
-
 	private static void cadastraContato(Agenda agenda, Scanner sc){
         System.out.print("\nPosição> ");
         int posicao = sc.nextInt();
@@ -87,7 +86,6 @@ public class MainAgenda {
         String telefone = sc.nextLine();
         System.out.println(agenda.cadastraContato(posicao, nome, sobrenome, telefone));
     }
-
 
 	private static void listarContatos(Agenda agenda){
         System.out.println(agenda.listarContatos());
@@ -117,7 +115,6 @@ public class MainAgenda {
         int posicaoFavorito1 = sc.nextInt();
         agenda.removerFavorito(posicaoFavorito1);
 	}
-	
 	
 	/**
 	 * Lê uma agenda de um arquivo csv. 
