@@ -35,10 +35,9 @@ public class Agenda {
 
 
     public String exibirContato(int posicao){
-        if(contatos[posicao-1] == null){
+        if(posicao < 1 || posicao > 100 || contatos[posicao-1] == null){
             return "POSICAO INVALIDA";
         }
-
 
         return contatos[posicao-1].exibiContato(); 
     }
