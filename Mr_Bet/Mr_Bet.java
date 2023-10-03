@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Map;
 
 public class Mr_Bet{
 
@@ -15,13 +16,6 @@ public class Mr_Bet{
         }
         times.put(codigo, new Time(codigo, nome, mascote));
         return "INCLUSÃO REALIZADA!";
-    }
-
-    public Time recuperaTime(String codigo){
-        if(this.times.containsKey(codigo)){
-            return this.times.get(codigo);
-        }
-        return times.get(codigo);
     }
 
     private void TratamentodeExcecoes(String codigo, String nome, String mascote){
