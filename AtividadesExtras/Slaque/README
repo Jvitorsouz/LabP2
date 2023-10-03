@@ -1,1 +1,16 @@
+Sistema de mensagens com usuários e canais. É possível cadastrar usuários
+(nome e email) e canais (nome) nesse sistema. Cada usuário é identificado por
+seu email e um usuário pode entrar e sair de um canal e mandar mensagens (de
+uma palavra). O sistema deve poder imprimir os usuários(sem ordem definida)
+de um canal e o histórico de mensagens desse canal (na ordem de inserção, com
+o usuário e texto da mensagem).
 
+USUARIO MATHEUS MATHEUSGR@EXAMPLE.COM
+CANAL SPLAB
+ENTRAR SPLAB MATHEUSGR@EXAMPLE.COM
+MENSAGEM SPLAB MATHEUSGR@EXAMPLE.COM Oi!
+SAIR SPLAB MATHEUSGR@EXAMPLE.COM
+IMPRIME SLAB:
+    Matheus:
+    - Matheus: Oi!
+ENCERRAR
