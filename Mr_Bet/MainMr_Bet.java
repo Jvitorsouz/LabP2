@@ -70,6 +70,6 @@ public class MainMr_Bet{
         System.out.print("\nCódigo: ");
 		String codigo = sc.nextLine();
 		sc.nextLine();
-        System.out.println(sistema.recuperaTime(codigo));          
+        //System.out.println(sistema.recuperaTime(codigo));          
     }
 }
