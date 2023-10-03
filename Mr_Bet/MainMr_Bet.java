@@ -76,9 +76,9 @@ public class MainMr_Bet{
     }
 
     private static void adicionaCampeonato(Mr_Bet sistema, Scanner sc){
+        sc.nextLine();
         System.out.print("\nCampeonato: ");
 		String campeonato = sc.nextLine();
-        sc.nextLine();
         System.out.print("Participantes: ");
 		int participantes = sc.nextInt();
         System.out.println(sistema.adicionaCampeonato(campeonato, participantes));
@@ -90,12 +90,26 @@ public class MainMr_Bet{
         String op = sc.nextLine();
         switch (op.toUpperCase()){
             case "I":
-                System.out.print("\nCódigo: ");
-                String codigo = sc.nextLine();
-                System.out.print("\nCampeonato: ");
-		        String campeonato = sc.nextLine();
-                System.out.println(sistema.addTimeCampeonato(campeonato, codigo));
+                try {
+                    System.out.print("\nCódigo: ");
+                    String codigo = sc.nextLine();
+                    System.out.print("\nCampeonato: ");
+                    String campeonato = sc.nextLine();
+                    System.out.println(sistema.addTimeCampeonato(campeonato, codigo));
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
                 break;
+            case "V":
+                try {
+                    System.out.print("\nCódigo: ");
+                    String codigo = sc.nextLine();
+                    System.out.print("Campeonato: ");
+                    String campeonato = sc.nextLine();
+                    System.out.println(sistema.verificaTimeCampeonato(campeonato, codigo));
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
         }
     }
 }

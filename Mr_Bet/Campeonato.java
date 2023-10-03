@@ -1,14 +1,17 @@
+import java.util.HashSet;
+
 public class Campeonato{
 
     private String nome;
     private int qtdeTimes;
-    private Time[] times;
+    //private Time[] times;
+    private HashSet<Time> times;
     private int idx;
 
     public Campeonato(String nome, int qtdeTimes){
         this.nome = nome;
         this.qtdeTimes = qtdeTimes;
-        times = new Time[qtdeTimes];
+        times = new HashSet<>();
     }
 
     @Override
@@ -37,8 +40,22 @@ public class Campeonato{
     }
 
     public boolean addTime(Time time){
-        times[idx++] = time;
+        times.add(time);
         return true;
     }
+
+    public int getQtde(){
+        return this.qtdeTimes;
+    }
+
+    public int getIdx(){
+        return this.times.size();
+    }
+
+    public boolean verificaTime(String codigoTime){
+        Time time = new Time(codigoTime, "", "");
+        return times.contains(time);
+    }
+
 
 }
