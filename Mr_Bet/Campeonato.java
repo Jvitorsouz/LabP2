@@ -57,5 +57,8 @@ public class Campeonato{
         return times.contains(time);
     }
 
+    public String toString(){
+        return "\n* " + this.nome + " - " + this.times.size() + "/" + this.qtdeTimes;      
+    }
 
 }

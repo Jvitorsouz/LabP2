@@ -46,6 +46,7 @@ public class MainMr_Bet{
                 addTimeCampeonato(sistema, scanner);
                 break;
             case "E":
+                exbirirTimeCampeonatos(sistema, scanner);
                 break;
             case "T":
                 break;
@@ -111,5 +112,12 @@ public class MainMr_Bet{
                     System.out.println(e.getMessage());
                 }
         }
+    }
+
+    private static void exbirirTimeCampeonatos(Mr_Bet sistema, Scanner sc){
+        sc.nextLine();
+        System.out.print("\nCódigo: ");
+        String codigo = sc.nextLine();
+        System.out.println(sistema.exibirTimeCampeonatos(codigo));
     }
 }

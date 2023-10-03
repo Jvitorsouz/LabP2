@@ -53,6 +53,16 @@ public class Mr_Bet{
         return "O TIME NÃO ESTÁ NO CAMPEONATO!";
     }
 
+    public String exibirTimeCampeonatos(String codigoTime){
+        String formatacao = "\nCampeonatos do " + this.times.get(codigoTime).getNome() + ":";
+        for(String key: campeonatos.keySet()){
+            if(this.campeonatos.get(key).verificaTime(codigoTime)){
+                formatacao += this.campeonatos.get(key);
+            }
+
+        }
+        return formatacao;
+    }
 
 
 

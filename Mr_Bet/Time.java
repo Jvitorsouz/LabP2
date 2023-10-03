@@ -39,5 +39,8 @@ public class Time{
         return true;
     }
 
+    public String getNome(){
+        return this.nome;
+    }
     
 }
