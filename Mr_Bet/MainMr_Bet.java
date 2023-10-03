@@ -40,8 +40,10 @@ public class MainMr_Bet{
                 recuperaTime(sistema, scanner);
                 break;
             case ".":
+                adicionaCampeonato(sistema, scanner);
                 break;
             case "B":
+                addTimeCampeonato(sistema, scanner);
                 break;
             case "E":
                 break;
@@ -56,9 +58,9 @@ public class MainMr_Bet{
     }
 
     private static void addTime(Mr_Bet sistema, Scanner sc){
+        sc.nextLine();
         System.out.print("\nCódigo: ");
 		String codigo = sc.nextLine();
-		sc.nextLine();
 		System.out.print("Nome> ");
 		String nome = sc.nextLine();
 		System.out.print("Mascote> ");
@@ -67,9 +69,33 @@ public class MainMr_Bet{
     }
 
     private static void recuperaTime(Mr_Bet sistema, Scanner sc){
+        sc.nextLine();
         System.out.print("\nCódigo: ");
 		String codigo = sc.nextLine();
-		sc.nextLine();
-        //System.out.println(sistema.recuperaTime(codigo));          
+        System.out.println(sistema.recuperaTime(codigo));          
+    }
+
+    private static void adicionaCampeonato(Mr_Bet sistema, Scanner sc){
+        System.out.print("\nCampeonato: ");
+		String campeonato = sc.nextLine();
+        sc.nextLine();
+        System.out.print("Participantes: ");
+		int participantes = sc.nextInt();
+        System.out.println(sistema.adicionaCampeonato(campeonato, participantes));
+    }
+
+    private static void addTimeCampeonato(Mr_Bet sistema, Scanner sc){
+        sc.nextLine();
+        System.out.print("(I) Incluir time em campeonato ou (V) Verificar se time está em campeonato? ");
+        String op = sc.nextLine();
+        switch (op.toUpperCase()){
+            case "I":
+                System.out.print("\nCódigo: ");
+                String codigo = sc.nextLine();
+                System.out.print("\nCampeonato: ");
+		        String campeonato = sc.nextLine();
+                System.out.println(sistema.addTimeCampeonato(campeonato, codigo));
+                break;
+        }
     }
 }
