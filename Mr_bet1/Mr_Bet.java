@@ -1,17 +1,23 @@
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class Mr_Bet{
 
     private HashMap<String, Time> times;
     private HashMap<String, Campeonato> campeonatos;
+    private ArrayList<Aposta> apostas;
+    private TratarExcecoes tratarExecoes;
 
     public Mr_Bet(){
         times = new HashMap<>();
         campeonatos = new HashMap<>();
+        apostas = new ArrayList<>();
+        tratarExecoes = new TratarExcecoes();
     }
 
     public String incluirTime(String codigo, String nome, String mascote){
+        tratarExecoes.incluirTimesExcecao(codigo, nome, mascote);
+
         if(this.times.containsKey(codigo)){
             return "TIME JÁ EXISTE!";
         }
@@ -20,14 +26,18 @@ public class Mr_Bet{
     }
 
     public String recuperaTime(String codigo){
+        tratarExecoes.codigoExcecao(codigo);
+
         if(this.times.containsKey(codigo)){
-            return "[" + codigo + "] " + this.times.get(codigo);
+            return "\n" + this.times.get(codigo);
         }
 
         return "TIME NÃO EXISTE!";  
     }
 
     public String adicionaCampeonato(String campeonato, int qtdeTimes){
+        tratarExecoes.codigoExcecao(campeonato);
+
         if(this.campeonatos.containsKey(campeonato)){
             return "CAMPEONATO JÁ EXISTE!";
         }
@@ -36,7 +46,10 @@ public class Mr_Bet{
     }
 
     public String addTimeCampeonato(String codigoTime, String campeonato){
+        tratarExecoes.codigosExcecao(codigoTime, campeonato);
         TratamentodeExcecoes(codigoTime, campeonato);
+
+
         if(this.campeonatos.get(campeonato).getIdx() >= this.campeonatos.get(campeonato).getQtde()){
             return "TODOS OS TIMES DESSE CAMPEONATO JÁ FORAM INCLUÍDOS!";
         }
@@ -45,7 +58,9 @@ public class Mr_Bet{
     }
 
     public String verificaTimeCampeonato(String codigoTime, String campeonato){
+        tratarExecoes.codigosExcecao(codigoTime, campeonato);
         TratamentodeExcecoes(codigoTime, campeonato);
+
         if(this.campeonatos.get(campeonato).verificaTime(codigoTime)){
             return "O TIME ESTÁ NO CAMPEONATO!";
         }
@@ -53,12 +68,33 @@ public class Mr_Bet{
     }
 
     public String exibirTimeCampeonatos(String codigoTime){
+        tratarExecoes.codigoExcecao(codigoTime);
+
         String formatacao = "\nCampeonatos do " + this.times.get(codigoTime).getNome() + ":";
         for(String key: campeonatos.keySet()){
             if(this.campeonatos.get(key).verificaTime(codigoTime)){
                 formatacao += this.campeonatos.get(key);
             }
 
+        }
+        return formatacao;
+    }
+
+    public String apostar(String codigoTime, String codigoCampeonato, int colocacao, double valor){
+        tratarExecoes.codigosExcecao(codigoTime, codigoCampeonato);
+        TratamentodeExcecoes(codigoTime, codigoCampeonato);
+        
+        if(this.campeonatos.get(codigoCampeonato).getQtde() < colocacao){
+            return "APOSTA NÃO REGISTRADA!";
+        }
+        apostas.add(new Aposta(this.times.get(codigoTime), this.campeonatos.get(codigoCampeonato), colocacao, valor));
+        return "APOSTA REGISTRADA!";
+    }
+
+    public String statusAposta(){
+        String formatacao = "\n";
+        for(int i =0; i<apostas.size(); i++){
+            formatacao += (i+1) + ". " + apostas.get(i).toString() + System.lineSeparator();
         }
         return formatacao;
     }

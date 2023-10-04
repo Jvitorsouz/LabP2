@@ -27,7 +27,6 @@ public class MainMr_Bet{
 										"(T)Tentar a sorte e status\n"+
 										"(!)Já pode fechar o programa!\n"+
 										"\nOpção> ");
-		
 		return scanner.next().toUpperCase();
 	}
 
@@ -49,8 +48,10 @@ public class MainMr_Bet{
                 exbirirTimeCampeonatos(sistema, scanner);
                 break;
             case "T":
+                tentarSorteEStatus(sistema, scanner);
                 break;
             case "!":
+                System.out.println("Por hoje é só pessoal!");
                 System.exit(0);
                 break;
             default:
@@ -92,7 +93,6 @@ public class MainMr_Bet{
         switch (op.toUpperCase()){
             case "I":
                 try {
-                	//sc.nextLine();
                     System.out.print("Código: ");
                     String codigo = sc.nextLine();
                     System.out.print("Campeonato: ");
@@ -120,5 +120,29 @@ public class MainMr_Bet{
         System.out.print("\nCódigo: ");
         String codigo = sc.nextLine();
         System.out.println(sistema.exibirTimeCampeonatos(codigo));
+    }
+
+    private static void tentarSorteEStatus(Mr_Bet sistema, Scanner sc){
+        sc.nextLine();
+        System.out.print("(A)Apostar ou (S)Status das Apostas? ");
+        String op = sc.nextLine();
+
+        switch (op.toUpperCase()){
+            case "A":
+                System.out.print("\nCódigo: ");
+                String codigo = sc.nextLine();
+                System.out.print("Campeonato: ");
+                String campeonato = sc.nextLine();
+                System.out.print("Colocação: ");
+                int colocacao = sc.nextInt();
+                System.out.print("Valor da Aposta: ");
+                double valor = sc.nextDouble();
+                System.out.println(sistema.apostar(codigo, campeonato, colocacao, valor));
+             break;
+            case "S":
+                System.out.println(sistema.statusAposta());
+                break;
+        }
+
     }
 }

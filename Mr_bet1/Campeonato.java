@@ -4,7 +4,6 @@ public class Campeonato{
 
     private String nome;
     private int qtdeTimes;
-    //private Time[] times;
     private HashSet<Time> times;
     private int idx;
 
@@ -50,6 +49,10 @@ public class Campeonato{
 
     public int getIdx(){
         return this.times.size();
+    }
+
+    public String getNome(){
+        return this.nome;
     }
 
     public boolean verificaTime(String codigoTime){
