@@ -62,9 +62,9 @@ public class MainMr_Bet{
         sc.nextLine();
         System.out.print("\nCódigo: ");
 		String codigo = sc.nextLine();
-		System.out.print("Nome> ");
+		System.out.print("Nome: ");
 		String nome = sc.nextLine();
-		System.out.print("Mascote> ");
+		System.out.print("Mascote: ");
 		String mascote = sc.nextLine();
 		System.out.println(sistema.incluirTime(codigo, nome, mascote));       
     }
@@ -92,11 +92,12 @@ public class MainMr_Bet{
         switch (op.toUpperCase()){
             case "I":
                 try {
-                    System.out.print("\nCódigo: ");
+                	//sc.nextLine();
+                    System.out.print("Código: ");
                     String codigo = sc.nextLine();
-                    System.out.print("\nCampeonato: ");
+                    System.out.print("Campeonato: ");
                     String campeonato = sc.nextLine();
-                    System.out.println(sistema.addTimeCampeonato(campeonato, codigo));
+                    System.out.println(sistema.addTimeCampeonato(codigo, campeonato));
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
@@ -107,7 +108,7 @@ public class MainMr_Bet{
                     String codigo = sc.nextLine();
                     System.out.print("Campeonato: ");
                     String campeonato = sc.nextLine();
-                    System.out.println(sistema.verificaTimeCampeonato(campeonato, codigo));
+                    System.out.println(sistema.verificaTimeCampeonato(codigo, campeonato));
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }

@@ -35,16 +35,16 @@ public class Mr_Bet{
         return "CAMPEONATO ADICIONADO!";
     }
 
-    public String addTimeCampeonato(String campeonato, String codigoTime){
+    public String addTimeCampeonato(String codigoTime, String campeonato){
         TratamentodeExcecoes(codigoTime, campeonato);
         if(this.campeonatos.get(campeonato).getIdx() >= this.campeonatos.get(campeonato).getQtde()){
-            throw new IndexOutOfBoundsException("TODOS OS TIMES DESSE CAMPEONATO JÁ FORAM INCLUÍDOS!");
+            return "TODOS OS TIMES DESSE CAMPEONATO JÁ FORAM INCLUÍDOS!";
         }
         this.campeonatos.get(campeonato).addTime(this.times.get(codigoTime));
         return "TIME INCLUÍDO NO CAMPEONATO!";
     }
 
-    public String verificaTimeCampeonato(String campeonato, String codigoTime){
+    public String verificaTimeCampeonato(String codigoTime, String campeonato){
         TratamentodeExcecoes(codigoTime, campeonato);
         if(this.campeonatos.get(campeonato).verificaTime(codigoTime)){
             return "O TIME ESTÁ NO CAMPEONATO!";
@@ -63,28 +63,10 @@ public class Mr_Bet{
         return formatacao;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private void TratamentodeExcecoes(String codigoTime, String codigoCampeonato){
         if(!this.times.containsKey(codigoTime)){
             throw new IllegalArgumentException("TIME NÃO EXISTE!");
-        }if(!this.campeonatos.containsKey(codigoCampeonato)){
+        }else if(!this.campeonatos.containsKey(codigoCampeonato)){
             throw new IllegalArgumentException("CAMPEONATO NÃO EXISTE!");
         }
     }
