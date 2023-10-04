@@ -12,7 +12,6 @@ public class Mr_Bet{
     }
 
     public String incluirTime(String codigo, String nome, String mascote){
-        //TratamentodeExcecoes(codigo, nome, mascote);
         if(this.times.containsKey(codigo)){
             return "TIME JÁ EXISTE!";
         }

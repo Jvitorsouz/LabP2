@@ -11,7 +11,7 @@ public class Time{
     }
 
     public String toString(){
-        return this.nome + " " + this.mascote + System.lineSeparator(); 
+        return this.nome + " / " + this.mascote + System.lineSeparator(); 
     }
 
     @Override
