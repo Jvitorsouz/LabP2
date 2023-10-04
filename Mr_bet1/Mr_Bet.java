@@ -36,7 +36,7 @@ public class Mr_Bet{
     }
 
     public String adicionaCampeonato(String campeonato, int qtdeTimes){
-        tratarExecoes.codigoExcecao(campeonato);
+        tratarExecoes.campeonatoExcecao(campeonato);
 
         if(this.campeonatos.containsKey(campeonato)){
             return "CAMPEONATO JÁ EXISTE!";
@@ -45,8 +45,10 @@ public class Mr_Bet{
         return "CAMPEONATO ADICIONADO!";
     }
 
+    
     public String addTimeCampeonato(String codigoTime, String campeonato){
-        tratarExecoes.codigosExcecao(codigoTime, campeonato);
+        tratarExecoes.codigoExcecao(codigoTime);
+        tratarExecoes.campeonatoExcecao(campeonato);
         TratamentodeExcecoes(codigoTime, campeonato);
 
 
@@ -58,7 +60,8 @@ public class Mr_Bet{
     }
 
     public String verificaTimeCampeonato(String codigoTime, String campeonato){
-        tratarExecoes.codigosExcecao(codigoTime, campeonato);
+        tratarExecoes.codigoExcecao(codigoTime);
+        tratarExecoes.campeonatoExcecao(campeonato);
         TratamentodeExcecoes(codigoTime, campeonato);
 
         if(this.campeonatos.get(campeonato).verificaTime(codigoTime)){
@@ -81,7 +84,8 @@ public class Mr_Bet{
     }
 
     public String apostar(String codigoTime, String codigoCampeonato, int colocacao, double valor){
-        tratarExecoes.codigosExcecao(codigoTime, codigoCampeonato);
+        tratarExecoes.codigoExcecao(codigoTime);
+        tratarExecoes.campeonatoExcecao(codigoCampeonato);
         TratamentodeExcecoes(codigoTime, codigoCampeonato);
         
         if(this.campeonatos.get(codigoCampeonato).getQtde() < colocacao){

@@ -1,3 +1,5 @@
+import org.junit.platform.commons.util.StringUtils;
+
 public class TratarExcecoes{
 
     public TratarExcecoes(){
@@ -5,25 +7,25 @@ public class TratarExcecoes{
     }
 
     public void incluirTimesExcecao(String codigo, String nome, String mascote){
-        if(codigo.isEmpty()){
+        if(StringUtils.isBlank(codigo)){
             throw new IllegalArgumentException("CODIGO NULO OU VAZIO");
-        }if(nome.isEmpty()){
+        }if(StringUtils.isBlank(nome)){
             throw new IllegalArgumentException("NOME NULO OU VAZIO");
-        }if(mascote.isEmpty()){
+        }if(StringUtils.isBlank(mascote)){
             throw new IllegalArgumentException("MASCOTE NULO OU VAZIO");
         }
     }
-
+    
     public void codigoExcecao(String codigo){
-        if(codigo.isEmpty()){
+        if(StringUtils.isBlank(codigo)){
             throw new IllegalArgumentException("CODIGO NULO OU VAZIO");
         }
     }
 
-    public void codigosExcecao(String codigo1, String codigo2){
-        if(codigo1.isEmpty() && codigo2.isEmpty()){
-            throw new IllegalArgumentException("CODIGO NULO OU VAZIO");
+    public void campeonatoExcecao(String codigo){
+        if(StringUtils.isBlank(codigo)){
+            throw new IllegalArgumentException("CAMPEONATO NULO OU VAZIO");
         }
     }
-
+  
 }
