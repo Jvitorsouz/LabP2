@@ -27,8 +27,8 @@ public class TestesGerais {
 	
 	@Test
 	public void recuperarTimeTest() {
-		assertEquals(sistema.recuperaTime("250_PB"), "[250_PB] Nacional de Patos / Canário\n");
-		assertEquals(sistema.recuperaTime("251_PE"), "[251_PE] Nacional de Recife / Paz\n");
+		assertEquals(sistema.recuperaTime("250_PB"), "\n[250_PB] Nacional de Patos / Canário");
+		assertEquals(sistema.recuperaTime("251_PE"), "\n[251_PE] Nacional de Recife / Paz");
 		assertEquals(sistema.recuperaTime("151_SC"), "TIME NÃO EXISTE!");
 	}
 	
