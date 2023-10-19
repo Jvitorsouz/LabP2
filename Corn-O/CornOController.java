@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,6 +51,10 @@ public class CornOController{
     public boolean responderQuestao(int idAnotacao, int ordemQuestao, String resposta){
         ExceptionAnotacao(anotacoes.get(idAnotacao));
         return anotacoes.get(idAnotacao).responderQuestao(ordemQuestao-1, resposta);
+    }
+
+    public String listarAnotacoes(){
+        return "";
     }
 
     private void ExceptionAnotacao(Anotacao anotacao){

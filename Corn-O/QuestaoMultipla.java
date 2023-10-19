@@ -1,6 +1,6 @@
 import java.util.Comparator;
 
-public class QuestaoMultipla implements Questao, Comparator<String>{
+public class QuestaoMultipla implements Questao{
 
     private String enunciado;
     private String[] alternativas;
@@ -26,22 +26,12 @@ public class QuestaoMultipla implements Questao, Comparator<String>{
     }
 
     @Override
-    public boolean responderQuestao(String texto1) {
-       if(compare(texto1, gabarito) == 0){
+    public boolean responderQuestao(String texto) {
+       if(texto.equals(gabarito)){
         return true;
        }
        return false;
     }
 
-    @Override
-    public int compare(String resposta1 ,String resposta2){
-        /*if(resposta1.equals(resposta2)){
-            return 0;
-        } else{
-            return -1;
-        }*/
-        return resposta1.compareTo(resposta2);
-       
-    }
 
 }
