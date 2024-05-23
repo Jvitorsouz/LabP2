@@ -1,0 +1,77 @@
+BEP
+composes Bordado
+composes Compra
+---
+- bordados: Bordado[]
+- compras: Compra[]
+---
++ BEP()
++ cadastrarBordado(id: int, numLinhas: int, numColunas: int): void
++ atualizarBordado(id: int, tipoPonto: str, numLinhas: int, numColunas: int): void
++ imprimeBordado(id: int): str
++ listarBordados(): str
++ alterarTamanahoBordados(id: int, numLinhas: int, numColunas: int): void
++ efetuarCompra(idsBordados: int[]): void
++ imprimirCompra(idCompra: int): str
++ avaliarBordado(id: int, nota: double, comentario: str): void
++ getMediaAvaliacoesBordado(idBordado: int): double
++ getAvaliacoesBordado(idBordado: int): str
+---
+
+Bordado
+composes Avaliacao
+association Compra
+---
+- id: int
+- linhas: int
+- colunas: int
+- qtdePontos: int
+- bordados: str[][]
+- avaliacoes: Avaliacao[]
+- preco: double
+- qtdeAvaliacoes: double
+- mediaGeral: double
+---
++ Bordado(id: int, linhas: int, coluna: int)
++ avaliarBordado(id: int, nota: int, comentario: str): void
++ adicionaPonto(ponto: str, linha: int, coluna: int): void
++ setLinhas(linhas: int): void
++ setColunas(colunas: int): void
++ adicionarAvaliações(avaliacao: Avaliacao): void
++ getMediaAvaliacao(): double
++ getAvaliacoes(): str
++ toString(): str
++ exibiBordado(): str
+---
+
+Compra
+---
+- bordados: Bordado[]
+- valorTotal: double
+---
++ Compra(bordados: Bordado[])
++ setValorTotal(): void
+---
+
+Avaliacao
+---
+- nota: int
+- comentario: Str
+---
++ Avaliacao(nota: int, comentario: str)
++ getNota(): double
++ toString(): str
+---
+
+
+
+
+
+
+
+
+
+
+
+
+

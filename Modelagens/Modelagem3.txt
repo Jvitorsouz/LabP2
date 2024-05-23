@@ -1,0 +1,134 @@
+//Alunos
+//João Vitor da Silva Souza
+//Luiz Felipe Azevedo Brito
+//Thawany Karoline Sousa Fernandes
+
+
+Main 
+association FaBorSystem 
+---
+---
+---
+
+FaBorSystem 
+composes Bordado, LinhaDeProducao, Robo<<Abstract>> 
+--- 
+- bordados: Map<Integer, Bordado>
+- robos: HashMap<String , Robo<<Abstract>>
+- linhaProducaoController: LinhaProducaoController
+---
++ FaBorSystem()
++ cadastraBordado(altura: int, largura: int): int
++ listaBordado(idBordado: int): str
++ cadastraRoboLimpador(idRobo: str): str
++ cadastraRoboBorda(idRobo: str): str
++ cadastraRoboRetangulo(x1: int, y1: int, x2: int, y2: int, idRobo: str): str
++ cadastraRoboPonto(x: int, y: int, idRobo: str): str
++ cadastraProd(idRobo: str, posicao: int): void
++ processa(idBordado: int): double
++ pegaPeso(): int
++ apagaRobo(idRobo: str): void
++ contaProcessamentos(idBordado: int): int
++ atualizaBordado(idBordado: int, x: int, y: int): void
++ estadoBordado(idBordado: int, estado: int): str
+---
+
+Robo<<Abstract>>
+---
+- codigo: string                     
+- peso: int                          
+- custoPorPonto: double
+---
++ Robo(codigo: string, peso: int, custoPorPonto: double)
++ getCodigo(): string                
++ getPeso(): int                     
++ getCustoPorPonto(): double
++ executarAcao(bordado: Bordado): double
++ custoDeAtivacao(custoPorPonto: double, contaProcessamentos: int): double
+---
+
+RoboLimpador
+extends Robo<<Abstract>>
+---
+---
++ RoboLimpador(codigo: string, peso: int, custoPorPonto: double)
++ getCodigo(): string                
++ getPeso(): int                     
++ getCustoPorPonto(): double
++ executarAcao(bordado: Bordado): double
++ custoDeAtivacao(custoPorPonto: double, contaProcessamentos: int): double
+---
+
+RoboBorda
+extends Robo<<Abstract>>
+---
+---
++ RoboBorda(codigo: string, peso: int, custoPorPonto: double)
++ getCodigo(): string                
++ getPeso(): int                     
++ getCustoPorPonto(): double
++ executarAcao(bordado: Bordado): double
++ custoDeAtivacao(custoPorPonto: double, contaProcessamentos: int): double
+---
+
+RoboRetangulo
+extends Robo<<Abstract>>
+---
+- posicao1: int[]
+- posicao2: int[]
+---
++ RoboRetangulo(codigo: string, peso: int, custoPorPonto: double, x1: int, y1: int, x2: int, y2: int)
++ getCodigo(): string                
++ getPeso(): int                     
++ getCustoPorPonto(): double
++ executarAcao(bordado: Bordado): double
++ custoDeAtivacao(custoPorPonto: double, contaProcessamentos: int): double
+---
+
+RoboPonto
+extends Robo<<Abstract>>
+---
+- posicao: int[]
+---
++ RoboPonto(codigo: string, peso: int, custoPorPonto: double, x: int, y: int)
++ getCodigo(): string                
++ getPeso(): int                     
++ getCustoPorPonto(): double
++ executarAcao(bordado: Bordado): double
++ custoDeAtivacao(custoPorPonto: double, contaProcessamentos: int): double
+---
+
+Bordado
+---
+- idBordado: int
+- altura: int
+- largura: int
+- pontos: char[][]
+- contagemProcessamento: int
+---
++ getIdBordado(): int
++ getAltura(): int
++ getLargura(): int
++ getPontos(): char[][]
++ setPontos(): void
++ getContagemProcessamento(): int
++ incrementarContagemProcessamento():void
++ toString(): String
++ equals(o: Object): boolean
++ hashCode(): int 
++ editarBordado(): void
+---
+
+
+LinhaDeProducao 
+---
+- robos: Robo[5]
+- bordados: Bordado[]         
+---
++ adicionarRobo(robo: Robo<<Abstract>>, posicao: int): void
++ removerRobo(posicao: int): void
++ processarBordado(id: int): double
++ listarBordado(id: int): String
++ getPesoRobos(): int
++ exibirHistorico(id: int): String
+---

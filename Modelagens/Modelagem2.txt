@@ -1,0 +1,62 @@
+SistemaProg2pedia
+composes Pagina, Colaborador, Atualizacao
+---
+- paginas: hashMap<String, Pagina>
+- colaboradores: LinkedHashMap<String, Colaborador>
+- historicos: ArrayList<Atualizacao>
+- temas: hashMap<String, Pagina[]>
+---
++ SistemaProg2pedia()
++ cadastrarPagina(titulo: str, emailColaborador: str): void
++ lerPagina(tituloPagina: str): str
++ lerPaginaAleatoria(): str
++ editarPagina(titulo: str, emailColaborador: str, conteudo: str): boolean
++ cadastrarColaborador(nome: str, email: str): void
++ listarColaboradores(): str
++ adicionarColaboradorEspecial(tituloPagina: str, emailColaborador: str): void
++ listarHistoricosEdicoes(): str
++ adicionarTemasPaginas(tituloPagina: str, tema: str): boolean
++ listarPaginasTemas(tema: str): str
+---
+
+Pagina
+association Colaborador
+---
+- titulo: str
+- conteudo: str
+- colaboradoresEspeciais: ArrayList<Colaborador>
+- temas: hashSet<str>
+---
++ Pagina(titulo: str)
++ equals(o: Object): boolean
++ hashCode(): int
++ toString(): str
++ setConteudo(novoCoteudo: str): void
++ adicionaColaboradorEspecial(colaborador: Colaborador): void
++ adicionaTema(tema: str): void
+---
+
+
+Colaborador
+---
+- nome: str
+- email: str
+- qtdeAtualizacao: int
+---
++ Colaborador(nome: str, email: str)
++ equals(o: Object): boolean
++ hashCode(): int
++ toString(): str
++ atualizaQtde(): void
+---
+
+Atualizacao
+---
+- data: str
+- emailColaborador: str
+- tituloPagina: str
+- ultimaVersaoPagina: str
+---
++ Atualizacao(emailColaborador: str, tituloPagina: str, ultimaVersaoPagina: str)
++ toString(): str
+---
